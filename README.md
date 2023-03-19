@@ -4,9 +4,12 @@
 1. Copier le fichier **env.exemple** et renomer le copie du fichier **env.exemple** en **.env** .
 2. Changer la valeur de la variable **DATABASE_URL** dans le fichier **.env** vers l'url de votre base de donnée MongoDB.
 - `DATABASE_URL="mongodb://<Utilisateur>:<Mot de passe>@<Url Serveur>:<Port>/<Base de donnée>" `
-
+3. completez aussi la section #config mail dans .env
+- `MAIL_USER= votre adresse mail `
+- `MAIL_PASSWORD= mot de passe d'application de votre l'adresse mail `
+- `MAIL_FROM= votre adresse mail `
 >Section **Optionnel**.
-3. ***(OPTIONNEL)*** Si vous préfere que docker gère la base de donnée pour vous, la variable **DATABASE_URL** dans le fichier **.env** reste la valeur par defaut. Executer la commande suivante. 
+4. ***(OPTIONNEL)*** Si vous préfere que docker gère la base de donnée pour vous, la variable **DATABASE_URL** dans le fichier **.env** reste la valeur par defaut. Executer la commande suivante. 
 ```bash 
 
 # pour demarrer la base de donnée
