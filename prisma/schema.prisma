@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String        @unique
+  password      String
+  refreshToken  String?
+  createdAt     DateTime?     @default(now())
+  updatedAt     DateTime?     @updatedAt
+  bookings      Booking[]
+}
+
+enum BookingStatus {
+  PENDING
+  VALIDATE
+  CANCELLED
+}
+
+model Booking {
+  id                 String             @id @default(auto()) @map("_id") @db.ObjectId
+  status             BookingStatus      @default(PENDING)
+  createdAt          DateTime           @default(now())
+  user               User?              @relation(fields: [userId], references: [id])
+  userId             String             @db.ObjectId
+  trainTickets       TrainTicket[]
+}
+
+model Trip {
+  id            String             @id @default(auto()) @map("_id") @db.ObjectId
+  departure     String
+  arrival       String
+  seats         Seat[]
+}
+
+
+model TrainTicket {
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  date          DateTime
+  price         Float
+  booking       Booking?       @relation(fields: [bookingId], references: [id])
+  bookingId     String?        @db.ObjectId
+  seatId        String?       @db.ObjectId  @unique
+  seat          Seat?         @relation(fields: [seatId], references: [id])
+}
+
+model Seat {
+  id                 String             @id @default(auto()) @map("_id") @db.ObjectId
+  seatNo             Int
+  isAvailable        Boolean            @default(true)
+  updatedAt          DateTime           @updatedAt
+  trip               Trip?              @relation(fields: [tripId], references: [id])
+  tripId             String?            @db.ObjectId
+  trainTicket        TrainTicket?
+}
+
+model ConfirmBooking {
+  id            String             @id @default(auto()) @map("_id") @db.ObjectId
+  uuid          String             
+  bookingId     String             @db.ObjectId
+  useId         String             @db.ObjectId
+}
+
+model CancelBooking {
+  id            String             @id @default(auto()) @map("_id") @db.ObjectId
+  uuid          String      
+  bookingId     String             @db.ObjectId       
+  useId         String             @db.ObjectId
+}

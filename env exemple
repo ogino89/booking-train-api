@@ -1,0 +1,19 @@
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+DATABASE_URL="mongodb://root:prisma@localhost:27017/booking?authSource=admin&retryWrites=true&w=majority"
+JWT_SECRET="moopmohguiguguerwrhkjhfsdfhksahlfdsflkjhdsfhlds"
+JWT_REFRESH_SECRET="dfdngkldkadfls537454sflfdfkjjrzz99894zljealkazkaf"
+JWT_EXPIRATION_TIME='1h'
+JWT_REFRESH_EXPIRATION_TIME='1d'
+
+# mail config
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USER=soandroniriela@gmail.com
+MAIL_PASSWORD=abzeovigtkxmxsnd
+MAIL_FROM=soandroniriela@gmail.com
+

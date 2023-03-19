@@ -1,0 +1,69 @@
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+    <title>Confirmation réservation</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width:
+                100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding:
+                8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Annuler la réservation</h3>
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>{{ name }}</th>
+        </tr>
+        {{#each trainTickets}}
+        <tr>
+            <td>Depart</td>
+            <td>{{ this.seat.trip.departure }}</td>
+        </tr>
+        <tr>
+            <td>Arrivée</td>
+            <td>{{ this.seat.trip.arrival }}</td>
+        </tr>
+        <tr>
+            <td>Prix</td>
+            <td>{{ this.price }} €</td>
+        </tr>
+        <tr>
+            <td>Siège</td>
+            <td>N° {{ this.seat.seatNo }}</td>
+        </tr>
+        {{/each}}
+        <tr>
+            <td>Pour valider la reservation</td>
+            <td><a href={{url}} class='btn btn-primary'>Cliquer pour valider</a></td>
+        </tr>
+        <tr>
+            <td>Ou copier le token</td>
+            <td>{{uuid}}</td>
+        </tr>
+
+    </table>
+</body>
+
+</html>
