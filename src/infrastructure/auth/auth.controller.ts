@@ -14,6 +14,7 @@ import { RegisterDto } from './dto/register.dto';
 import { JwtGuard } from './guards/jwt.guard';
 import { JwtRefreshGuard } from './guards/jwt-refresh.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
+import { LoginAuthUseCase } from '../../domain/auth/usecase/login-auth.usecase';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -25,17 +26,19 @@ export class AuthController {
 
   @Post('/login')
   @UseGuards(LocalAuthGuard)
-  login(@Request() req, @Body() LoginDto: LoginDto) {
-    return this.authService.login(req.user);
+  async login(@Request() req, @Body() loginDto: LoginDto) {
+    const loginUseCase = new LoginAuthUseCase(this.authService);
+    return await loginUseCase.execute(loginDto.)
+    // return this.authService.login(req.user);
   }
 
-  @Post('/register')
-  async register(@Body() registerDto: RegisterDto) {
-    let user = await this.authService.register(registerDto);
-    let tooken = await this.authService.login(user);
-    let response = { ...user, ...tooken };
-    return response;
-  }
+  // @Post('/register')
+  // async register(@Body() registerDto: RegisterDto) {
+  //   let user = await this.authService.register(registerDto);
+  //   let tooken = await this.authService.login(user);
+  //   let response = { ...user, ...tooken };
+  //   return response;
+  // }
 
   @ApiBearerAuth()
   @UseGuards(JwtRefreshGuard)

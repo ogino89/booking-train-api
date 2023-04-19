@@ -12,7 +12,7 @@ import { RefreshTokenStrategy } from './strategies/refreshToken.strategy';
 import { BcryptService } from '../adapters/bcrypt/bcrypt.service';
 import { ExceptionsService } from '../adapters/exceptions/exceptions.service';
 import { LoggerService } from '../adapters/logger/logger.service';
-import { ValidateAuthUseCase } from '../../domain/auth/usecase/validate-auth.usecase';
+// import { LoginAuthUseCase } from 'src/domain/auth/usecase/login-auth.usecase';
 
 @Module({
   imports: [
@@ -30,10 +30,10 @@ import { ValidateAuthUseCase } from '../../domain/auth/usecase/validate-auth.use
         };
       },
     }),
-    // ExceptionsService,
     // BcryptService,
+    // ExceptionsService,
     // LoggerService,
-    ValidateAuthUseCase,
+    // LoginAuthUseCase,
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy, RefreshTokenStrategy],
   controllers: [AuthController],
