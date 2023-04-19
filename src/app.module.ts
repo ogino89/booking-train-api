@@ -2,15 +2,19 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
-import { HelperModule } from './helper/helper.module';
-import { PrismaModule } from './prisma/prisma.module';
-import { UserModule } from './user/user.module';
-import { TripModule } from './trip/trip.module';
-import { SeatModule } from './seat/seat.module';
-import { BookingModule } from './booking/booking.module';
-import { TrainTicketModule } from './train-ticket/train-ticket.module';
-import { SendMailModule } from './send-mail/send-mail.module';
+import { ExceptionsModule } from './infrastructure/adapters/exceptions/exceptions.module';
+import { LoggerModule } from './infrastructure/adapters/logger/logger.module';
+import { PrismaModule } from './infrastructure/prisma/prisma.module';
+import { AuthModule } from './infrastructure/auth/auth.module';
+import { UserModule } from './infrastructure/user/user.module';
+import { TripModule } from './infrastructure/trip/trip.module';
+import { HelperModule } from './infrastructure/helper/helper.module';
+import { SeatModule } from './infrastructure/seat/seat.module';
+import { BookingModule } from './infrastructure/booking/booking.module';
+import { TrainTicketModule } from './infrastructure/train-ticket/train-ticket.module';
+import { SendMailModule } from './infrastructure/send-mail/send-mail.module';
+import { BcryptModule } from './infrastructure/adapters/bcrypt/bcrypt.module';
+import { UserService } from './infrastructure/user/user.service';
 
 @Module({
   imports: [
@@ -26,6 +30,10 @@ import { SendMailModule } from './send-mail/send-mail.module';
     BookingModule,
     TrainTicketModule,
     SendMailModule,
+
+    ExceptionsModule,
+    LoggerModule,
+    BcryptModule,
   ],
   controllers: [AppController],
   providers: [AppService],
