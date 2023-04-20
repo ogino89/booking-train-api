@@ -5,14 +5,14 @@ import { AppService } from './app.service';
 import { ExceptionsModule } from './infrastructure/adapters/exceptions/exceptions.module';
 import { LoggerModule } from './infrastructure/adapters/logger/logger.module';
 import { PrismaModule } from './infrastructure/adapters/prisma/prisma.module';
-import { AuthModule } from './infrastructure/module/auth/auth.module';
-import { UserModule } from './infrastructure/module//user/user.module';
-import { TripModule } from './infrastructure/module//trip/trip.module';
+import { AuthModule } from './infrastructure/modules/auth/auth.module';
+import { UserModule } from './infrastructure/modules/user/user.module';
+import { TripModule } from './infrastructure/modules/trip/trip.module';
 import { HelperModule } from './infrastructure/common/helper/helper.module';
-import { SeatModule } from './infrastructure/module//seat/seat.module';
-import { BookingModule } from './infrastructure/module//booking/booking.module';
-import { TrainTicketModule } from './infrastructure/module//train-ticket/train-ticket.module';
-import { SendMailModule } from './infrastructure/module//send-mail/send-mail.module';
+import { SeatModule } from './infrastructure/modules/seat/seat.module';
+import { BookingModule } from './infrastructure/modules/booking/booking.module';
+import { TrainTicketModule } from './infrastructure/modules/train-ticket/train-ticket.module';
+import { SendMailModule } from './infrastructure/modules/send-mail/send-mail.module';
 import { BcryptModule } from './infrastructure/adapters/bcrypt/bcrypt.module';
 
 @Module({
