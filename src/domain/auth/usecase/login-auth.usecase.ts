@@ -1,6 +1,3 @@
-import { ILogger } from '../../../domain/ports/logger.interface';
-import { IHashingService } from '../../../domain/ports/hashing.interface';
-import { IException } from '../../../domain/ports/exceptions.interface';
 import { UserModel } from '../../../domain/user/model/user.model';
 import { AuthRepositoryInterface } from '../port/auth-repository.interface';
 export class LoginAuthUseCase {

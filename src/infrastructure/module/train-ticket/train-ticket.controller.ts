@@ -13,9 +13,9 @@ import { TrainTicketService } from './train-ticket.service';
 import { CreateTrainTicketDto } from './dto/create-train-ticket.dto';
 import { UpdateTrainTicketDto } from './dto/update-train-ticket.dto';
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { PrismaHelperService } from '../helper/prisma-helper/prisma-helper.service';
+import { PrismaHelperService } from '../../common/helper/prisma-helper/prisma-helper.service';
 import { Prisma } from '@prisma/client';
-import { JwtGuard } from '../../infrastructure/auth/guards/jwt.guard';
+import { JwtGuard } from '../auth/guards/jwt.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtGuard)

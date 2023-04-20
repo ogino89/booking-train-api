@@ -5,14 +5,14 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PrismaService } from '../prisma/prisma.service';
+import { PrismaService } from '../../adapters/prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 import {
   PrismaClientKnownRequestError,
   PrismaClientValidationError,
 } from '@prisma/client/runtime/library';
-import { CreateUserUseCase } from '../../domain/user/usecase/create-user.usecase';
-import { UserRepositoryInterface } from '../../domain/user/port/user-repository.interface';
+import { CreateUserUseCase } from '../../../domain/user/usecase/create-user.usecase';
+import { UserRepositoryInterface } from '../../../domain/user/port/user-repository.interface';
 import { UserModel } from 'src/domain/user/model/user.model';
 import { CreateUserDto } from './dto/create-user.dto';
 
@@ -78,9 +78,4 @@ export class UserService implements UserRepositoryInterface {
     await this.prismaService.user.delete({ where: { id } });
     return `User with id ${id} is deleted`;
   }
-
-  // async delete(id: string) {
-  //   const user = await this.findOne(id);
-  //   return this.prismaService.user.delete({ where: { id: user.id } });
-  // }
 }

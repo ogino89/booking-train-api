@@ -14,11 +14,11 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { JwtGuard } from '../../infrastructure/auth/guards/jwt.guard';
+import { JwtGuard } from '../auth/guards/jwt.guard';
 import { CreateUserUseCase } from 'src/domain/user/usecase/create-user.usecase';
-import { LoggerService } from '../adapters/logger/logger.service';
-import { ExceptionsService } from '../adapters/exceptions/exceptions.service';
-import { BcryptService } from '../adapters/bcrypt/bcrypt.service';
+import { LoggerService } from '../../adapters/logger/logger.service';
+import { ExceptionsService } from '../../adapters/exceptions/exceptions.service';
+import { BcryptService } from '../../adapters/bcrypt/bcrypt.service';
 import { UserModel } from 'src/domain/user/model/user.model';
 import { FindAllUserUseCase } from 'src/domain/user/usecase/findAll-user.usecase';
 import { FindOneUserUseCase } from 'src/domain/user/usecase/findOne-user.usecase';
@@ -50,6 +50,7 @@ export class UserController {
       createUserDto.email,
       createUserDto.password,
     );
+
     const createdUser = await createUserUseCase.execute(user);
     return createdUser;
   }

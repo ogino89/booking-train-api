@@ -13,9 +13,9 @@ import { SeatService } from './seat.service';
 import { CreateSeatDto } from './dto/create-seat.dto';
 import { UpdateSeatDto } from './dto/update-seat.dto';
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { PrismaHelperService } from '../helper/prisma-helper/prisma-helper.service';
+import { PrismaHelperService } from '../../common/helper/prisma-helper/prisma-helper.service';
 import { Prisma } from '@prisma/client';
-import { JwtGuard } from '../../infrastructure/auth/guards/jwt.guard';
+import { JwtGuard } from '../auth/guards/jwt.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtGuard)

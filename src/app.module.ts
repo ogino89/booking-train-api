@@ -4,17 +4,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ExceptionsModule } from './infrastructure/adapters/exceptions/exceptions.module';
 import { LoggerModule } from './infrastructure/adapters/logger/logger.module';
-import { PrismaModule } from './infrastructure/prisma/prisma.module';
-import { AuthModule } from './infrastructure/auth/auth.module';
-import { UserModule } from './infrastructure/user/user.module';
-import { TripModule } from './infrastructure/trip/trip.module';
-import { HelperModule } from './infrastructure/helper/helper.module';
-import { SeatModule } from './infrastructure/seat/seat.module';
-import { BookingModule } from './infrastructure/booking/booking.module';
-import { TrainTicketModule } from './infrastructure/train-ticket/train-ticket.module';
-import { SendMailModule } from './infrastructure/send-mail/send-mail.module';
+import { PrismaModule } from './infrastructure/adapters/prisma/prisma.module';
+import { AuthModule } from './infrastructure/module/auth/auth.module';
+import { UserModule } from './infrastructure/module//user/user.module';
+import { TripModule } from './infrastructure/module//trip/trip.module';
+import { HelperModule } from './infrastructure/common/helper/helper.module';
+import { SeatModule } from './infrastructure/module//seat/seat.module';
+import { BookingModule } from './infrastructure/module//booking/booking.module';
+import { TrainTicketModule } from './infrastructure/module//train-ticket/train-ticket.module';
+import { SendMailModule } from './infrastructure/module//send-mail/send-mail.module';
 import { BcryptModule } from './infrastructure/adapters/bcrypt/bcrypt.module';
-import { UserService } from './infrastructure/user/user.service';
 
 @Module({
   imports: [

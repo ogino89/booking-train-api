@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaClientValidationError } from '@prisma/client/runtime/library';
-import { PrismaService } from '../prisma/prisma.service';
+import { PrismaService } from '../../adapters/prisma/prisma.service';
 import { SeatService } from '../seat/seat.service';
 import { SendMailService } from '../send-mail/send-mail.service';
 import { CreateTrainTicketDto } from '../train-ticket/dto/create-train-ticket.dto';

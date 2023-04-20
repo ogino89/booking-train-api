@@ -14,8 +14,8 @@ import { CreateTripDto } from './dto/create-trip.dto';
 import { UpdateTripDto } from './dto/update-trip.dto';
 import { Prisma } from '@prisma/client';
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { PrismaHelperService } from '../helper/prisma-helper/prisma-helper.service';
-import { JwtGuard } from '../../infrastructure/auth/guards/jwt.guard';
+import { PrismaHelperService } from '../../common/helper/prisma-helper/prisma-helper.service';
+import { JwtGuard } from '../auth/guards/jwt.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtGuard)

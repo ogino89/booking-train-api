@@ -12,12 +12,12 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { Prisma } from '@prisma/client';
-import { JwtGuard } from '../../infrastructure/auth/guards/jwt.guard';
-import { PrismaHelperService } from '../helper/prisma-helper/prisma-helper.service';
+import { PrismaHelperService } from '../../common/helper/prisma-helper/prisma-helper.service';
 import { BookingService } from './booking.service';
 import { CreateBookingWithTicketDto } from './dto/create-booking-with-ticket.dto';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingDto } from './dto/update-booking.dto';
+import { JwtGuard } from '../auth/guards/jwt.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtGuard)
