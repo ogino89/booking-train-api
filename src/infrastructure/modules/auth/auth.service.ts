@@ -70,14 +70,25 @@ export class AuthService implements AuthRepositoryInterface {
     return await bcrypt.hash(data, await bcrypt.genSalt(10));
   }
 
-  async updateRefreshToken(id: string, refreshToken: string): Promise<void> {
-    const hashedRefreshToken = await this.hashData(refreshToken);
-    await this.prismaService.user.update({
-      where: { id },
-      data: {
-        refreshToken: hashedRefreshToken,
-      },
-    });
+  async updateRefreshToken(
+    id: string,
+    email: string,
+    refreshToken: string,
+  ): Promise<void> {
+    try {
+      const hashedRefreshToken = await this.hashData(refreshToken);
+      await this.prismaService.user.update({
+        where: {
+          id: id,
+          email: email,
+        },
+        data: {
+          refreshToken: hashedRefreshToken,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async register(dataUser: UserModel): Promise<UserModel> {

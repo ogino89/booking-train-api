@@ -5,7 +5,7 @@ export class LoginAuthUseCase {
 
   public async execute(id: string, email: string): Promise<UserModel | any> {
     const tokens = await this.authRepository.getTokens(id, email);
-    this.authRepository.updateRefreshToken(id, tokens.refreshToken);
+    this.authRepository.updateRefreshToken(id, email, tokens.refreshToken);
 
     return {
       access_token: tokens.accessToken,

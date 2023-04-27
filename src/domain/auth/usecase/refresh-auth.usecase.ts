@@ -20,7 +20,11 @@ export class RefreshAuthUseCase {
       this.exeption.forbiddenException({ message: 'Access Denied' });
     }
     const tokens = await this.authRepository.getTokens(user.id, user.email);
-    this.authRepository.updateRefreshToken(user.id, tokens.refreshToken);
+    this.authRepository.updateRefreshToken(
+      user.id,
+      user.email,
+      tokens.refreshToken,
+    );
     return user;
   }
 }

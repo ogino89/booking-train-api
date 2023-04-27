@@ -6,9 +6,10 @@ import {
 import { Prisma } from '@prisma/client';
 import { PrismaClientValidationError } from '@prisma/client/runtime/library';
 import { PrismaService } from '../../adapters/prisma/prisma.service';
+import { TripRepositoryInterface } from 'src/domain/trip/port/trip-repository.interface';
 
 @Injectable()
-export class TripService {
+export class TripService implements TripRepositoryInterface {
   constructor(private readonly prismaService: PrismaService) {}
 
   async create(createTriptDto: Prisma.TripCreateInput) {
@@ -89,10 +90,12 @@ export class TripService {
     }
   }
 
-  async remove(id: string) {
+  async delete(id: string): Promise<string> {
     const trip = await this.findOne(id);
-    return await this.prismaService.trip.delete({
+    await this.prismaService.trip.delete({
       where: { id: trip.id },
     });
+
+    return `Trip with id ${id} is deleted`;
   }
 }
